@@ -1,46 +1,50 @@
-from flask import Flask, render_template, request
-import subprocess
+from flask import Flask, render_template, jsonify
+import requests
 
 app = Flask(__name__)
 
-# Home Page (Main Website)
+GITHUB_USER = "Nikitadevi"
+REPO_NAME = "MiniGithub_DevopsProject"
+
+# Home
 @app.route("/")
 def home():
     return render_template("index.html")
 
-# 1. Show Commit History
+
+# Get commits from GitHub
 @app.route("/commits")
 def commits():
-    logs = subprocess.getoutput("git log --oneline")
-    return f"<h2 style='font-family:Arial;'>Commit History</h2><pre>{logs}</pre>"
+    url = f"https://api.github.com/repos/{GITHUB_USER}/{REPO_NAME}/commits"
+    data = requests.get(url).json()
 
-# 2. Show Branches
+    html = "<h2>Latest Commits</h2><ul>"
+    for c in data[:10]:
+        html += f"<li><b>{c['commit']['message']}</b> - {c['commit']['author']['name']} </li>"
+    html += "</ul>"
+
+    return html
+
+
+# Get branches from GitHub
 @app.route("/branches")
 def branches():
-    branches = subprocess.getoutput("git branch")
-    return f"<h2 style='font-family:Arial;'>Branches</h2><pre>{branches}</pre>"
+    url = f"https://api.github.com/repos/{GITHUB_USER}/{REPO_NAME}/branches"
+    data = requests.get(url).json()
 
-# 3. Show Git Status
+    html = "<h2>Branches</h2><ul>"
+    for b in data:
+        html += f"<li>{b['name']}</li>"
+    html += "</ul>"
+
+    return html
+
+
+# Git Status (static message on cloud)
 @app.route("/status")
 def status():
-    status = subprocess.getoutput("git status")
-    return f"<h2 style='font-family:Arial;'>Git Status</h2><pre>{status}</pre>"
+    return "<h2>Status</h2><p>Live deployed version - Git history unavailable on server.</p>"
 
-# 4. Run Git Commands from Web
-@app.route("/run", methods=["GET", "POST"])
-def run_git_command():
-    output = ""
-    if request.method == "POST":
-        cmd = request.form.get("gitcmd")
-        output = subprocess.getoutput(cmd)
-    return f"""
-        <h2 style='font-family:Arial;'>Run Git Command</h2>
-        <form method='POST'>
-            <input name='gitcmd' placeholder='Enter git command' style='padding:8px;width:250px;'/>
-            <button type='submit' style='padding:8px 15px;'>Run</button>
-        </form>
-        <pre>{output}</pre>
-    """
 
 if __name__ == "__main__":
     app.run(debug=True)
