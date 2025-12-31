@@ -1,82 +1,140 @@
 ## 🚀 Mini GitHub – DevOps Source Code Management Project
 
-This project demonstrates how Git & GitHub are used in real-world software development for version control, collaboration, and code history tracking.
-The goal is to simulate how developers work in teams by managing code, creating branches, handling conflicts, and pushing updates to a remote repository.
-To represent changes, a webpage (index.html) is created and modified across multiple branches. Each commit reflects a version update — just like real projects in industry.
+A practical implementation of Git + GitHub workflow with branching, merging, conflict resolution, commits tracking, and Flask integration.
+This project simulates how real development teams manage code, collaborate, review history, and deploy updates.
 
-## 📄 Project Overview
+## 📌 Project Objective
 
-During development, code evolves through multiple updates. Git helps track these updates, store versions, and collaborate without losing code.
-In this project:
+The main aim of this project is to learn and perform version control in DevOps, understand how source code evolves over time, and demonstrate how developers work using Git.
+To practice this, I created a web page and maintained its versions through Git branches, commits, and merges.
 
-A Git repository is created locally
+Later, I integrated Flask (Python) to allow viewing Git Commit History, Branches, and Status through the browser — making it interactive.
 
-A webpage is developed and versioned using Git
+## 🧠 What this project demonstrates
 
-Multiple feature branches are created
+Concept	Description
+-Version Control	Track changes, revert anytime, maintain history
 
-Merging is performed with conflict resolution
+-Branching	Work on new features without affecting main code
 
-Code is pushed to GitHub for remote backup & sharing
+-Merge & Conflicts	Combine branches and manually resolve conflicts
 
-This project helped me understand the core Git workflow used in DevOps pipelines.
+-Remote Collaboration	Push, pull, sync using GitHub
 
-## ✨ Features Implemented in This Project
+-Flask Integration	View commits/branches/status inside the web app
 
-Feature	Description
-Git Initialization	Started a repository using git init
-Version Tracking	Tracked changes & maintained code versions using commits
-Branching Strategy	Created feature, test, bugfix, and experiment branches
-Merge Operations	Merged branches into master like real deployment workflow
-Merge Conflict Handling	Conflict was created intentionally and resolved manually
-Remote Repository Setup	Linked local repo to GitHub using git remote add origin
-Push to GitHub	Uploaded final work for sharing & backup
-READme Documentation	Explained usage, commands, workflow & screenshots
-🛠 Technologies & Tools Used
-Tool/Tech	Purpose in Project
-Git	Version control, branching, merging
-GitHub	Remote repository hosting & collaboration
-Git Bash	Terminal for executing Git commands
-HTML + CSS	Web UI file for testing Git workflow
-Windows/Linux	Practical execution of DevOps environment
+-Deployment Ready	Files added for hosting (requirements.txt, Procfile)
 
-## 📌 Complete Workflow Followed
-1. Created project folder  
-2. Initialized Git repository  
-3. Created `index.html` and wrote webpage code  
-4. Staged and committed changes  
-5. Created multiple branches for different tasks  
-6. Updated code separately inside branches  
-7. Performed merging back into master  
-8. Encountered merge conflict → resolved manually  
-9. Added GitHub remote link  
-10. Pushed final code to GitHub 
+## 📄 How the Project Works
 
-## 🧪 Git Commands Used (With Purpose)
+1.Created a Git repository locally
 
-git init # Initialize repository
-git status # Check working directory changes
-git add . # Stage all files
-git commit -m "message" # Commit staged changes
-git branch # List branches
-git branch <name> # Create branch
-git checkout <name> # Switch branch
-git merge <name> # Merge branch into current branch
-git log --oneline # View commit history in short form
-git diff # Show file differences
-git remote add origin <URL> # Connect to GitHub
-git push -u origin master # Upload code to remote repo
+2.Built a web page (index.html) to practice code changes
 
+3.Created multiple Git branches (feature, test, bugfix, experiment)
 
-## 🎯 Final Outcome
-A working Git repository demonstrating:
+4.Made modifications in each branch
 
-- Version control
-- Code history management
-- Branching & merging
-- Conflict resolution
-- Remote hosting on GitHub
+5.Merged back to master (intentionally created & solved conflict)
 
-## 👤 Developed By
-**Nikita Nath**  
-B.Tech CSE – 3rd Year 
+6.Connected repo to GitHub and pushed code
+
+7.Integrated Flask to display Git output through UI
+
+8.Prepared project for deployment
+
+## 🛠 Tech Stack & Tools Used
+
+-Technology	Usage
+
+-Git	Version control system
+
+-GitHub	Remote repo hosting
+
+-HTML + CSS	UI design for project webpage
+
+-Python + Flask	Backend routes to fetch commit/branch/status
+
+-Git Bash / Terminal	Executed commands to manage repo
+
+-Windows	Development environment
+
+## 🔥 Flask Features Added
+
+After running the app using python app.py, user can visit:
+
+Route	Output
+/	Main webpage (UI)
+
+/commits	Shows complete commit history
+
+/branches	Lists all Git branches
+
+/status	Displays git status of working directory
+
+/run (optional interactive)	Execute custom git commands (POST method)
+
+## 📌 Git Commands Used (with explanation)
+
+git init                # Start a new repository
+
+git status              # Check modified/untracked files
+
+git add .               # Stage all files
+
+git commit -m ""        # Save snapshot of changes
+
+git branch              # Show branch list
+
+git branch <name>       # Create new branch
+
+git checkout <name>     # Switch between branches
+
+git merge <name>        # Merge branch into current
+
+git log --oneline       # View short commit history
+
+git diff                # View file differences before commit
+
+git remote add origin   # Connect local repo to GitHub
+
+git push -u origin master   # Push code to GitHub
+
+## 🧩 What I Learned
+
+✔ How Git internally manages versions
+
+✔ How branches prevent conflicts during development
+
+✔ Handling & solving merge conflicts manually
+
+✔ Pushing and maintaining repository on GitHub
+
+✔ How Flask can execute system commands and show output on UI
+
+✔ Preparing a project for hosting
+
+## 📁 Project Structure
+
+MiniGithub_Devops/
+│── app.py               # Flask backend
+
+│── index.html           # Main UI (inside templates)
+
+│── templates/
+
+    └── index.html
+
+│── requirements.txt     # Libraries for deployment
+
+│── Procfile             # Render/Heroku deployment file
+
+└── README.md
+
+## 🎯 Final Output
+
+This project successfully demonstrates end-to-end Git workflow with practical implementation.
+It is useful for DevOps, version control training, beginners learning Git, and portfolio presentation.
+
+👤 Developed By
+## Nikita Nath
